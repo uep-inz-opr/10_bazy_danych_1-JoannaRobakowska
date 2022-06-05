@@ -26,6 +26,8 @@ cur.execute('''CREATE TABLE polaczenia (from_subscriber data_type INTEGER,
                   celltower data_type INTEGER);''')
 
 
+if __name__ == "__main__":
+    pass
 
     with open('polaczenia_duze.csv', 'r') as fin:
         reader = csv.reader(fin, delimiter=";")
@@ -34,8 +36,6 @@ cur.execute('''CREATE TABLE polaczenia (from_subscriber data_type INTEGER,
         cur.executemany("INSERT INTO polaczenia(from_subscriber, to_subscriber, datetime, duration, celltower) VALUES (?, ?, ?, ?, ?);",rows)
         sqlite_con.commit()
 
-if __name__ == "__main__":
-    pass
 
 RepGen=ReportGenerator(sqlite_con, escape_string="?")
 RepGen.generate_report()
