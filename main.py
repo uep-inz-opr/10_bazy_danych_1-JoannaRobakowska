@@ -1,4 +1,8 @@
 import csv, sqlite3
+import request
+
+if __name__ == "__main__":
+    file = input()
 
 class ReportGenerator:
     def __init__(self,connection, escape_string="(%s)"):
@@ -25,11 +29,7 @@ cur.execute('''CREATE TABLE polaczenia (from_subscriber data_type INTEGER,
                   duration data_type INTEGER , 
                   celltower data_type INTEGER);''')
 
-
-if __name__ == "__main__":
-    pass
-
-    with open('polaczenia_duze.csv', 'r') as fin:
+    with open(file, 'r') as fin:
         reader = csv.reader(fin, delimiter=";")
         headers = next(reader)
         rows = [x for x in reader]
